@@ -24,7 +24,7 @@
         body { font-family: var(--font-body); color: var(--clr-text-main); background-color: var(--clr-ivory); line-height: 1.6; overflow-x: hidden; }
 
         h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 400; color: var(--clr-black); line-height: 1.2; }
-        h1 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1rem; }
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 1rem; }
         h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
         h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
         p { margin-bottom: 1rem; }
@@ -34,6 +34,7 @@
 
         .eyebrow { display: block; font-family: var(--font-body); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--clr-gold); margin-bottom: 1rem; }
         .text-center { text-align: center; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
         .mt-2 { margin-top: var(--space-md); } .mt-4 { margin-top: var(--space-lg); }
         .w-100 { width: 100%; }
 
@@ -64,7 +65,9 @@
         #navbar { position: fixed; top: 0; width: 100%; padding: 1.5rem 0; z-index: 1000; transition: var(--transition); }
         #navbar.scrolled { background-color: rgba(26, 26, 26, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         .nav-container { width: 90%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .brand img, .footer-brand img { max-height: 45px; width: auto; filter: brightness(0) invert(1); } /* Forces logo pure white for dark backgrounds */
+        
+        /* Logo size increased by ~30% from 45px to 60px */
+        .brand img, .footer-brand img { max-height: 60px; width: auto; filter: brightness(0) invert(1); transition: var(--transition); } 
         
         .nav-links { list-style: none; display: flex; align-items: center; gap: 2rem; }
         .nav-links a { color: var(--clr-ivory); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; }
@@ -80,18 +83,62 @@
             .nav-links.nav-active { right: 0; }
         }
 
-        /* Hero & Video Embed */
-        #hero { min-height: 100vh; background-image: url('./images/hero.jpg'); background-color: var(--clr-black); background-size: cover; background-position: center; position: relative; display: flex; align-items: center; padding: 8rem 0 4rem 0; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%); }
-        .hero-content { position: relative; z-index: 2; width: 90%; max-width: 1200px; margin: 0 auto; color: var(--clr-ivory); display: grid; gap: 4rem; }
-        @media (min-width: 992px) { .hero-content { grid-template-columns: 1fr 1.2fr; align-items: center; } }
-        .hero-text-block { max-width: 600px; }
-        .hero-content h1 { color: var(--clr-ivory); }
-        .hero-content p { font-size: 1.15rem; margin-bottom: 2rem; color: #f0f0f0; }
-        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        /* Hero & Background Video */
+        #hero { 
+            position: relative; 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            overflow: hidden; 
+            background-color: var(--clr-black);
+        }
         
-        .hero-video-wrapper { background: rgba(0, 0, 0, 0.4); border-radius: 4px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border: 1px solid rgba(197, 168, 128, 0.3); transform: translateY(0); transition: var(--transition); }
-        .hero-video-wrapper:hover { transform: translateY(-5px); border-color: rgba(197, 168, 128, 0.8); box-shadow: 0 30px 60px -12px rgba(0,0,0,0.7); }
+        .hero-video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            transform: translate(-50%, -50%);
+            pointer-events: none; /* Prevents user interacting with iframe */
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        /* Forces the iframe to act like background-size: cover */
+        .hero-video-bg iframe {
+            width: 100vw;
+            height: 56.25vw; /* 16:9 Aspect Ratio */
+            min-height: 100vh;
+            min-width: 177.77vh; /* 16:9 Aspect Ratio */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-overlay { 
+            position: absolute; 
+            inset: 0; 
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.7) 100%); 
+            z-index: 1; 
+        }
+        
+        .hero-content { 
+            position: relative; 
+            z-index: 2; 
+            width: 90%; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            color: var(--clr-ivory); 
+            text-align: center;
+            padding-top: 4rem;
+        }
+        
+        .hero-content h1 { color: var(--clr-ivory); }
+        .hero-content p { font-size: 1.25rem; margin-bottom: 2.5rem; color: #f0f0f0; max-width: 700px; margin-left: auto; margin-right: auto;}
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
         /* How We Work */
         .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
@@ -204,22 +251,25 @@
     </nav>
 
     <header id="hero">
+        
+        <div class="hero-video-bg">
+            <iframe 
+                src="https://go.screenpal.com/player/cOeXfJnZ4hW?ff=1&ahc=1&dcc=1&tl=0&bg=transparent&share=0&download=0&embed=1&cl=0&autoplay=1&muted=1&loop=1&controls=0" 
+                frameborder="0" 
+                scrolling="no" 
+                allowfullscreen="true"
+                allow="autoplay; fullscreen">
+            </iframe>
+        </div>
+        
         <div class="hero-overlay"></div>
+        
         <div class="hero-content reveal">
-            <div class="hero-text-block">
-                <h1>Experience The California Journeys Difference</h1>
-                <p>Curated private luxury travel from the cityscapes of Los Angeles to the majestic redwoods of Yosemite.</p>
-                <div class="hero-buttons">
-                    <a href="#about" class="btn btn-outline">Learn More</a>
-                    <a href="#contact" class="btn btn-solid">Request A Quote</a>
-                </div>
-            </div>
-            
-            <div class="hero-video-wrapper">
-                <div class="sp-embed-player" data-id="cOeXfJnZ4hW" data-aspect-ratio="1.780250" data-padding-top="56.171875%" style="position:relative;width:100%;padding-top:56.171875%;height:0;">
-                    <script src="https://go.screenpal.com/consumption/player_appearance/cOeXfJnZ4hW/1.780250"></script>
-                    <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" scrolling="no" src="https://go.screenpal.com/player/cOeXfJnZ4hW?ff=1&ahc=1&dcc=1&tl=1&bg=transparent&share=1&download=1&embed=1&cl=1&autoplay=1&muted=1" allowfullscreen="true"></iframe>
-                </div>
+            <h1>Experience The California Journeys Difference</h1>
+            <p>Curated private luxury travel from the cityscapes of Los Angeles to the majestic redwoods of Yosemite.</p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-outline">Learn More</a>
+                <a href="#contact" class="btn btn-solid">Request A Quote</a>
             </div>
         </div>
     </header>
@@ -258,7 +308,7 @@
             
             <div class="container itinerary-grid mt-4">
                 <article class="itinerary-card reveal" data-category="yosemite">
-                    <div class="itinerary-image"><img src="./images/itinerary-yosemite.jpg" alt="Privately Guided Yosemite" loading="lazy"></div>
+                    <div class="itinerary-image"><img src="https://images.unsplash.com/photo-1527482531641-76a087796d8e?auto=format&fit=crop&q=80&w=800" alt="Privately Guided Yosemite" loading="lazy"></div>
                     <div class="itinerary-content">
                         <h3>Privately Guided Yosemite</h3>
                         <span class="duration">5 Days</span>
@@ -276,7 +326,7 @@
                 </article>
 
                 <article class="itinerary-card reveal reveal-delay" data-category="yosemite">
-                    <div class="itinerary-image"><img src="./images/itinerary-sequoia-yosemite.jpg" alt="Privately Guided Sequoia & Yosemite" loading="lazy"></div>
+                    <div class="itinerary-image"><img src="https://images.unsplash.com/photo-1544252890-a4005bd5da53?auto=format&fit=crop&q=80&w=800" alt="Privately Guided Sequoia & Yosemite" loading="lazy"></div>
                     <div class="itinerary-content">
                         <h3>Privately Guided Sequoia & Yosemite</h3>
                         <span class="duration">6 Days</span>
@@ -295,7 +345,7 @@
                 </article>
 
                 <article class="itinerary-card reveal reveal-delay-2" data-category="desert">
-                    <div class="itinerary-image"><img src="./images/itinerary-joshua-death-valley.jpg" alt="Privately Guided Joshua Tree & Death Valley" loading="lazy"></div>
+                    <div class="itinerary-image"><img src="https://images.unsplash.com/photo-1517409440608-27b0373df99d?auto=format&fit=crop&q=80&w=800" alt="Privately Guided Joshua Tree & Death Valley" loading="lazy"></div>
                     <div class="itinerary-content">
                         <h3>Joshua Tree & Death Valley</h3>
                         <span class="duration">6 Days</span>
@@ -314,7 +364,7 @@
                 </article>
 
                 <article class="itinerary-card reveal" data-category="desert">
-                    <div class="itinerary-image"><img src="./images/itinerary-joshua-tree.jpg" alt="Privately Guided Joshua Tree" loading="lazy"></div>
+                    <div class="itinerary-image"><img src="https://images.unsplash.com/photo-1563245465-d055a40b4ec7?auto=format&fit=crop&q=80&w=800" alt="Privately Guided Joshua Tree" loading="lazy"></div>
                     <div class="itinerary-content">
                         <h3>Privately Guided Joshua Tree</h3>
                         <span class="duration">4 Days</span>
@@ -331,7 +381,7 @@
                 </article>
 
                 <article class="itinerary-card reveal reveal-delay" data-category="coast">
-                    <div class="itinerary-image"><img src="./images/itinerary-big-sur.jpg" alt="Privately Guided Big Sur & Monterey Peninsula" loading="lazy"></div>
+                    <div class="itinerary-image"><img src="https://images.unsplash.com/photo-1508004526072-0be43baea5e1?auto=format&fit=crop&q=80&w=800" alt="Privately Guided Big Sur & Monterey Peninsula" loading="lazy"></div>
                     <div class="itinerary-content">
                         <h3>Big Sur & Monterey Peninsula</h3>
                         <span class="duration">5 Days</span>
@@ -349,7 +399,7 @@
                 </article>
 
                 <article class="itinerary-card reveal reveal-delay-2" data-category="coast yosemite">
-                    <div class="itinerary-image"><img src="./images/itinerary-yosemite-carmel.jpg" alt="Privately Guided Yosemite, Carmel & Big Sur" loading="lazy"></div>
+                    <div class="itinerary-image"><img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&q=80&w=800" alt="Privately Guided Yosemite, Carmel & Big Sur" loading="lazy"></div>
                     <div class="itinerary-content">
                         <h3>Yosemite, Carmel & Big Sur</h3>
                         <span class="duration">7 Days</span>
@@ -372,7 +422,7 @@
 
         <section id="stay" class="section-padding dark-bg">
             <div class="container layout-grid-2 align-center">
-                <div class="stay-image reveal"><img src="./images/where-youll-stay.jpg" alt="Luxury accommodation in California" loading="lazy"></div>
+                <div class="stay-image reveal"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800" alt="Luxury accommodation in California" loading="lazy"></div>
                 <div class="stay-text reveal reveal-delay">
                     <h2>Where You’ll Stay</h2>
                     <p>Explore iconic destinations like Yosemite, Sequoia, and Joshua Tree with privately guided tours that promise not just a trip, but an exploration of the awe-inspiring landscapes California has to offer.</p>
