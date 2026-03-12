@@ -17,6 +17,7 @@
             --clr-sand: #E6E2DD;
             --clr-gold: #C5A880; 
             --clr-gold-hover: #b0936b; 
+            --clr-orange: #ff914d; /* Updated to match the Learn More button in screenshot */
             --clr-teal: #4A6B6C;
             --clr-text-main: #2D2D2D; 
             --clr-text-light: #666666;
@@ -30,6 +31,7 @@
         body { font-family: var(--font-main); color: var(--clr-text-main); background-color: var(--clr-ivory); line-height: 1.6; overflow-x: hidden; }
 
         h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; }
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 1rem; }
         h2 { font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 1.5rem; letter-spacing: -0.02em; }
         h3 { font-size: 1.25rem; font-weight: 600; }
         p { margin-bottom: 1rem; }
@@ -51,20 +53,19 @@
         .dark-bg { background-color: var(--clr-dark-bg); color: var(--clr-ivory); }
         .black-bg { background-color: #000; color: #fff; }
 
-        .btn { display: inline-block; padding: 1rem 2rem; font-family: var(--font-main); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; border: 1px solid transparent; cursor: pointer; transition: var(--transition); border-radius: 4px; }
-        .btn-solid { background-color: var(--clr-gold); color: var(--clr-ivory); }
-        .btn-solid:hover { background-color: var(--clr-gold-hover); }
+        .btn { display: inline-block; padding: 1rem 2rem; font-family: var(--font-main); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; border: 1px solid transparent; cursor: pointer; transition: var(--transition); border-radius: 30px; }
+        .btn-solid { background-color: var(--clr-orange); color: #fff; }
+        .btn-solid:hover { background-color: #e07a3e; }
 
         /* Nav & Logo */
         #navbar { position: fixed; top: 0; width: 100%; padding: 1.5rem 0; z-index: 1000; transition: var(--transition); background: transparent; }
         #navbar.scrolled { background-color: rgba(17, 17, 17, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-        .nav-container { width: 90%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-container { width: 90%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: flex-start; align-items: center; }
         
-        .brand { display: flex; align-items: center; justify-content: flex-start; }
+        .brand { flex-grow: 1; }
         .brand img, .footer-brand img { max-height: 60px; width: auto; filter: brightness(0) invert(1); transition: var(--transition); } 
         
         @media (max-width: 768px) {
-            /* Per user correction: mobile logo 10% smaller */
             .brand img { transform: scale(0.9); transform-origin: left center; }
         }
         
@@ -85,8 +86,8 @@
             position: relative; 
             min-height: 100vh; 
             display: flex; 
-            align-items: center; 
-            justify-content: center;
+            align-items: flex-end; /* Align to bottom like the screenshot */
+            padding-bottom: 10%;
             overflow: hidden; 
             background-color: var(--clr-black);
         }
@@ -105,22 +106,22 @@
 
         .hero-overlay { 
             position: absolute; inset: 0; 
-            background: rgba(0,0,0,0.3); 
+            background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 100%); 
             z-index: 1; 
         }
         
         .hero-content { 
             position: relative; z-index: 2; 
-            width: 90%; max-width: 800px; 
-            display: flex; justify-content: center; align-items: center;
+            width: 90%; max-width: 1400px; 
+            margin: 0 auto;
+            color: var(--clr-ivory); 
         }
-        
-        .hero-center-logo {
-            width: 80%;
-            max-width: 500px;
-            filter: brightness(0) invert(1);
-            animation: fadeIn 1.5s ease;
+
+        .hero-text-block {
+            max-width: 600px;
         }
+
+        .hero-content h1 { font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 2rem; font-weight: 500; }
 
         /* Intro Section */
         .intro-text {
@@ -176,26 +177,24 @@
         .signature { font-style: italic; font-size: 1.2rem; color: #ffffff; margin-top: 2rem; }
         
         .hww-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .hww-card { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 2/3; }
-        .hww-card img { width: 100%; height: 100%; object-fit: cover; }
-        .hww-card-text {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            padding: 3rem 1rem 1.5rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
-            color: white; font-weight: 600; font-size: 1.1rem; line-height: 1.3;
-        }
+        .hww-card { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 2/3; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .hww-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .hww-card:hover img { transform: scale(1.03); }
 
         /* Featured Itineraries */
         .itinerary-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-        @media (min-width: 768px) { .itinerary-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 768px) { .itinerary-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .itinerary-grid { grid-template-columns: repeat(3, 1fr); } }
 
         .itinerary-card {
-            position: relative; border-radius: 8px; overflow: hidden;
-            aspect-ratio: 1; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.4s ease;
+            background: var(--clr-ivory); box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 8px; overflow: hidden; transition: transform 0.4s ease;
         }
         .itinerary-card:hover { transform: translateY(-5px); }
-        .itinerary-card img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .itinerary-image-container { position: relative; aspect-ratio: 1; overflow: hidden; }
+        .itinerary-image-container img { width: 100%; height: 100%; object-fit: cover; }
+        
         .itinerary-card-overlay {
             position: absolute; bottom: 0; left: 0; right: 0;
             padding: 4rem 1.5rem 1.5rem;
@@ -203,8 +202,22 @@
             display: flex; justify-content: space-between; align-items: flex-end;
             color: white;
         }
-        .itinerary-card-overlay h3 { margin: 0; font-size: 1.1rem; max-width: 75%; line-height: 1.3; }
-        .itinerary-card-overlay span { font-size: 0.9rem; white-space: nowrap; }
+        .itinerary-card-overlay h3 { margin: 0; font-size: 1.1rem; max-width: 75%; line-height: 1.3; font-weight: 600; }
+        .itinerary-card-overlay span { font-size: 0.9rem; white-space: nowrap; font-weight: 400; }
+
+        .itinerary-content { padding: 1.5rem; }
+        
+        /* Dropdown Accordion */
+        .itinerary-accordion summary { list-style: none; cursor: pointer; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--clr-teal); font-weight: 600; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
+        .itinerary-accordion summary:hover { color: var(--clr-gold); }
+        .itinerary-accordion summary::-webkit-details-marker { display: none; }
+        .itinerary-accordion summary::after { content: '+'; font-size: 1.2rem; font-weight: 300; }
+        .itinerary-accordion[open] summary::after { content: '−'; }
+        
+        .day-by-day { list-style: none; font-size: 0.9rem; color: var(--clr-text-light); margin-top: 1rem; animation: fadeIn 0.4s ease; }
+        .day-by-day li { padding-bottom: 0.5rem; border-bottom: 1px dashed var(--clr-sand); margin-bottom: 0.5rem; }
+        .day-by-day li:last-child { border: none; margin: 0; padding: 0; }
+        .day-by-day strong { color: var(--clr-text-main); font-weight: 600; }
 
         /* As Seen In / Partners */
         .press-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 4rem; align-items: center; }
@@ -230,14 +243,13 @@
         .footer-links a { text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; font-weight: 600; }
         .footer-links a:hover { color: var(--clr-gold); }
         .footer-copy { font-size: 0.8rem; color: #888; }
-        
-        /* Per user correction: year font color dark blue */
         #year { color: darkblue; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .reveal-delay { transition-delay: 0.2s; }
+        .reveal-delay-2 { transition-delay: 0.4s; }
     </style>
 </head>
 <body>
@@ -266,8 +278,11 @@
             </video>
         </div>
         <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/California-Journeys-Logo-Black.png?resize=1080%2C492&ssl=1" alt="California Journeys" class="hero-center-logo">
+        <div class="hero-content reveal">
+            <div class="hero-text-block">
+                <h1>Experience The<br>California Journeys<br>Difference</h1>
+                <a href="#about" class="btn btn-solid">Learn More &rarr;</a>
+            </div>
         </div>
     </header>
 
@@ -325,20 +340,16 @@
                 </div>
                 <div class="hww-cards reveal reveal-delay">
                     <div class="hww-card">
-                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Northern-Journeys-How-we-work-1.jpg?resize=467%2C713&ssl=1" alt="Private Transfers" loading="lazy">
-                        <div class="hww-card-text">Private Transfers<br>& Luxury Vehicles</div>
+                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Northern-Journeys-How-we-work-1.jpg?resize=467%2C713&ssl=1" alt="Private Transfers & Luxury Vehicles" loading="lazy">
                     </div>
                     <div class="hww-card">
-                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Northern-Journeys-How-we-work-2.jpg?resize=467%2C715&ssl=1" alt="Custom Itineraries" loading="lazy">
-                        <div class="hww-card-text">Custom Itineraries<br>& Private Guides</div>
+                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Northern-Journeys-How-we-work-2.jpg?resize=467%2C715&ssl=1" alt="Custom Itineraries & Private Guides" loading="lazy">
                     </div>
                     <div class="hww-card">
-                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Northern-Journeys-How-we-work-3.jpg?resize=478%2C717&ssl=1" alt="Luxury Lodges" loading="lazy">
-                        <div class="hww-card-text">Luxury Lodges &<br>Private Villas</div>
+                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Northern-Journeys-How-we-work-3.jpg?resize=478%2C717&ssl=1" alt="Luxury Lodges & Private Villas" loading="lazy">
                     </div>
                     <div class="hww-card">
-                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Northern-Journeys-How-we-work-4.jpg?resize=464%2C716&ssl=1" alt="Private Chefs" loading="lazy">
-                        <div class="hww-card-text">Private Chefs &<br>Gourmet Picnics</div>
+                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Northern-Journeys-How-we-work-4.jpg?resize=464%2C716&ssl=1" alt="Private Chefs & Gourmet Picnics" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -349,29 +360,152 @@
             <div class="container itinerary-grid">
                 
                 <article class="itinerary-card reveal">
-                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Yosemite.jpg?resize=400%2C410&ssl=1" alt="Privately Guided Yosemite" loading="lazy">
-                    <div class="itinerary-card-overlay">
-                        <h3>Privately Guided Yosemite</h3>
-                        <span>5 Days</span>
+                    <div class="itinerary-image-container">
+                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Yosemite.jpg?resize=400%2C410&ssl=1" alt="Privately Guided Yosemite" loading="lazy">
+                        <div class="itinerary-card-overlay">
+                            <h3>Privately Guided Yosemite</h3>
+                            <span>5 Days</span>
+                        </div>
+                    </div>
+                    <div class="itinerary-content">
+                        <details class="itinerary-accordion">
+                            <summary>View Daily Itinerary</summary>
+                            <ul class="day-by-day">
+                                <li><strong>Day 1:</strong> Arrive Fresno. Overnight Tenaya</li>
+                                <li><strong>Day 2:</strong> Yosemite Valley. Overnight Tenaya</li>
+                                <li><strong>Day 3:</strong> Yosemite High Country. Overnight Tenaya</li>
+                                <li><strong>Day 4:</strong> Giant Sequoia Redwood Hike. Overnight Tenaya</li>
+                                <li><strong>Day 5:</strong> Depart Fresno</li>
+                            </ul>
+                        </details>
                     </div>
                 </article>
 
                 <article class="itinerary-card reveal reveal-delay">
-                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Sequoia.jpg?resize=400%2C410&ssl=1" alt="Privately Guided Sequoia & Yosemite" loading="lazy">
-                    <div class="itinerary-card-overlay">
-                        <h3>Privately Guided Sequoia & Yosemite</h3>
-                        <span>6 Days</span>
+                    <div class="itinerary-image-container">
+                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Sequoia.jpg?resize=400%2C410&ssl=1" alt="Privately Guided Sequoia & Yosemite" loading="lazy">
+                        <div class="itinerary-card-overlay">
+                            <h3>Privately Guided Sequoia & Yosemite</h3>
+                            <span>6 Days</span>
+                        </div>
+                    </div>
+                    <div class="itinerary-content">
+                        <details class="itinerary-accordion">
+                            <summary>View Daily Itinerary</summary>
+                            <ul class="day-by-day">
+                                <li><strong>Day 1:</strong> Arrive Fresno. Overnight Wuksachi Lodge</li>
+                                <li><strong>Day 2:</strong> King’s Canyon & Sequoia NP. Overnight Wuksachi Lodge</li>
+                                <li><strong>Day 3:</strong> Head to Yosemite. Overnight Tenaya Lodge</li>
+                                <li><strong>Day 4:</strong> Yosemite Valley. Overnight Tenaya Lodge</li>
+                                <li><strong>Day 5:</strong> Yosemite High Country. Overnight Tenaya Lodge</li>
+                                <li><strong>Day 6:</strong> Depart Fresno</li>
+                            </ul>
+                        </details>
+                    </div>
+                </article>
+
+                <article class="itinerary-card reveal reveal-delay-2">
+                    <div class="itinerary-image-container">
+                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/JoshuaTree.jpg?resize=400%2C410&ssl=1" alt="Privately Guided Joshua Tree & Death Valley" loading="lazy">
+                        <div class="itinerary-card-overlay">
+                            <h3>Joshua Tree & Death Valley</h3>
+                            <span>6 Days</span>
+                        </div>
+                    </div>
+                    <div class="itinerary-content">
+                        <details class="itinerary-accordion">
+                            <summary>View Daily Itinerary</summary>
+                            <ul class="day-by-day">
+                                <li><strong>Day 1:</strong> Arrive Palm Springs. Hike Indian Canyon. Overnight Campbell House</li>
+                                <li><strong>Day 2:</strong> Joshua Tree NP. Overnight Campbell House</li>
+                                <li><strong>Day 3:</strong> Head to Death Valley. Badwater Salt Flats. Overnight Inn at Death Valley</li>
+                                <li><strong>Day 4:</strong> Crater Hike, Mosaic Canyon, Dunes. Overnight Inn at Death Valley</li>
+                                <li><strong>Day 5:</strong> Ranches & Rock Faces. Overnight Inn at Death Valley</li>
+                                <li><strong>Day 6:</strong> Sunrise Zabriskie Point, Depart Las Vegas</li>
+                            </ul>
+                        </details>
+                    </div>
+                </article>
+
+                <article class="itinerary-card reveal">
+                    <div class="itinerary-image-container">
+                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/JoshuaTree.jpg?resize=400%2C410&ssl=1" alt="Privately Guided Joshua Tree" loading="lazy">
+                        <div class="itinerary-card-overlay">
+                            <h3>Privately Guided Joshua Tree</h3>
+                            <span>4 Days</span>
+                        </div>
+                    </div>
+                    <div class="itinerary-content">
+                        <details class="itinerary-accordion">
+                            <summary>View Daily Itinerary</summary>
+                            <ul class="day-by-day">
+                                <li><strong>Day 1:</strong> Arrive Palm Springs. Hike Indian Canyon. Overnight Campbell House</li>
+                                <li><strong>Day 2:</strong> Joshua Tree NP. Overnight Campbell House</li>
+                                <li><strong>Day 3:</strong> Joshua Tree NP. Overnight Campbell House</li>
+                                <li><strong>Day 4:</strong> Depart Palm Springs</li>
+                            </ul>
+                        </details>
                     </div>
                 </article>
 
                 <article class="itinerary-card reveal reveal-delay">
-                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/JoshuaTree.jpg?resize=400%2C410&ssl=1" alt="Privately Guided Joshua Tree & Death Valley" loading="lazy">
-                    <div class="itinerary-card-overlay">
-                        <h3>Privately Guided Joshua Tree & Death Valley</h3>
-                        <span>6 Days</span>
+                    <div class="itinerary-image-container">
+                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/BigSur.jpg?resize=400%2C410&ssl=1" alt="Privately Guided Big Sur & Monterey Peninsula" loading="lazy">
+                        <div class="itinerary-card-overlay">
+                            <h3>Big Sur & Monterey Peninsula</h3>
+                            <span>5 Days</span>
+                        </div>
+                    </div>
+                    <div class="itinerary-content">
+                        <details class="itinerary-accordion">
+                            <summary>View Daily Itinerary</summary>
+                            <ul class="day-by-day">
+                                <li><strong>Day 1:</strong> Arrive San Jose, head to Big Sur. Overnight Post Ranch Inn</li>
+                                <li><strong>Day 2:</strong> Full Day Big Sur. Overnight Post Ranch Inn</li>
+                                <li><strong>Day 3:</strong> Head to Monterey, sunset catamaran. Overnight Carmel Valley Ranch</li>
+                                <li><strong>Day 4:</strong> Bike, Hike, Kayak. Overnight Carmel Valley Ranch</li>
+                                <li><strong>Day 5:</strong> Depart San Jose</li>
+                            </ul>
+                        </details>
+                    </div>
+                </article>
+
+                <article class="itinerary-card reveal reveal-delay-2">
+                    <div class="itinerary-image-container">
+                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Monterrey.jpg?resize=400%2C410&ssl=1" alt="Privately Guided Yosemite, Carmel & Big Sur" loading="lazy">
+                        <div class="itinerary-card-overlay">
+                            <h3>Yosemite, Carmel & Big Sur</h3>
+                            <span>7 Days</span>
+                        </div>
+                    </div>
+                    <div class="itinerary-content">
+                        <details class="itinerary-accordion">
+                            <summary>View Daily Itinerary</summary>
+                            <ul class="day-by-day">
+                                <li><strong>Day 1:</strong> Arrive SF. Head to Yosemite. Overnight Rush Creek Lodge</li>
+                                <li><strong>Day 2:</strong> Yosemite Valley. Overnight Rush Creek Lodge</li>
+                                <li><strong>Day 3:</strong> Yosemite High Country. Overnight Rush Creek Lodge</li>
+                                <li><strong>Day 4:</strong> Head to Carmel. Overnight Bernardus Lodge</li>
+                                <li><strong>Day 5:</strong> Kayak, bike, Aquarium. Overnight Bernardus Lodge</li>
+                                <li><strong>Day 6:</strong> Full Day Big Sur. Overnight Bernardus Lodge</li>
+                                <li><strong>Day 7:</strong> San Francisco, Depart</li>
+                            </ul>
+                        </details>
                     </div>
                 </article>
                 
+            </div>
+        </section>
+
+        <section id="seen-in" class="padding-small sand-bg" style="border-top: 1px solid #ddd;">
+            <div class="container text-center reveal">
+                <span class="eyebrow mb-2">As Seen In</span>
+                <div class="press-strip">
+                    <img class="press-logo" src="https://upload.wikimedia.org/wikipedia/commons/7/75/National_Geographic_Logo.svg" alt="National Geographic">
+                    <img class="press-logo" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Travel_Channel_logo.svg" alt="Travel Channel">
+                    <img class="press-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Outside_magazine_logo.svg" alt="Outside">
+                    <img class="press-logo" src="https://upload.wikimedia.org/wikipedia/commons/7/77/The_New_York_Times_logo.png" alt="The New York Times">
+                </div>
             </div>
         </section>
 
@@ -402,7 +536,7 @@
                         <input type="number" id="math-captcha" required>
                     </div>
                     
-                    <button type="submit" class="btn btn-solid w-100" id="submit-btn">Submit Enquiry</button>
+                    <button type="submit" class="btn btn-solid w-100" id="submit-btn" style="border-radius: 4px;">Submit Enquiry</button>
                 </form>
             </div>
         </section>
@@ -467,6 +601,18 @@
 
             document.querySelectorAll('.reveal').forEach(el => revealOnScroll.observe(el));
             
+            // Auto-close accordions when another opens
+            const accordions = document.querySelectorAll('.itinerary-accordion');
+            accordions.forEach(acc => {
+                acc.addEventListener('toggle', (e) => {
+                    if (acc.open) {
+                        accordions.forEach(otherAcc => {
+                            if (otherAcc !== acc && otherAcc.open) otherAcc.removeAttribute('open');
+                        });
+                    }
+                });
+            });
+
             // Math Captcha Validation
             const form = document.querySelector('.luxury-form');
             const captchaInput = document.getElementById('math-captcha');
