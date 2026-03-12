@@ -4,79 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>California Journeys | Private Luxury Travel</title>
-    <meta name="description" content="Experience private luxury travel across California. Custom itineraries, private guides, and luxury lodges.">
+    <meta name="description" content="Private guided national park journeys in California. Luxury adventure travel.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --clr-black: #1A1A1A; --clr-ivory: #FAF9F6; --clr-sand: #E6E2DD;
-            --clr-gold: #C5A880; --clr-gold-hover: #b0936b; --clr-teal: #4A6B6C;
-            --clr-text-main: #2D2D2D; --clr-text-light: #666666;
-            --font-heading: 'Playfair Display', serif; --font-body: 'Inter', sans-serif;
-            --space-sm: 1rem; --space-md: 2rem; --space-lg: 4rem; --space-xl: 8rem;
+            --clr-black: #111111; 
+            --clr-ivory: #FAF9F6; 
+            --clr-sand: #E6E2DD;
+            --clr-gold: #C5A880; 
+            --clr-gold-hover: #b0936b; 
+            --clr-teal: #4A6B6C;
+            --clr-text-main: #2D2D2D; 
+            --clr-text-light: #666666;
+            --clr-dark-bg: #222629;
+            --font-main: 'Open Sans', sans-serif;
+            --space-sm: 1rem; --space-md: 2rem; --space-lg: 4rem; --space-xl: 6rem;
             --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); color: var(--clr-text-main); background-color: var(--clr-ivory); line-height: 1.6; overflow-x: hidden; }
+        body { font-family: var(--font-main); color: var(--clr-text-main); background-color: var(--clr-ivory); line-height: 1.6; overflow-x: hidden; }
 
-        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 400; color: var(--clr-black); line-height: 1.2; }
-        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 1rem; }
-        h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
-        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; }
+        h2 { font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+        h3 { font-size: 1.25rem; font-weight: 600; }
         p { margin-bottom: 1rem; }
-        .lead { font-size: 1.25rem; color: var(--clr-text-main); margin-bottom: 1.5rem; }
         a { color: inherit; text-decoration: none; transition: var(--transition); }
         img { max-width: 100%; height: auto; display: block; object-fit: cover; }
 
-        .eyebrow { display: block; font-family: var(--font-body); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--clr-gold); margin-bottom: 1rem; }
         .text-center { text-align: center; }
-        .mx-auto { margin-left: auto; margin-right: auto; }
         .mt-2 { margin-top: var(--space-md); } .mt-4 { margin-top: var(--space-lg); }
+        .mb-2 { margin-bottom: var(--space-md); }
         .w-100 { width: 100%; }
+        .section-title { font-size: 1.25rem; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: var(--clr-text-light); margin-bottom: 3rem; text-align: center; }
+        .section-title-light { color: #aaaaaa; }
 
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
         .section-padding { padding: var(--space-xl) 0; }
         .padding-small { padding: var(--space-lg) 0; }
 
         .light-bg { background-color: var(--clr-ivory); }
-        .sand-bg { background-color: var(--clr-sand); }
-        .dark-bg { background-color: var(--clr-black); color: var(--clr-ivory); }
-        .dark-bg h2, .dark-bg h3, .dark-bg p { color: var(--clr-ivory); }
+        .dark-bg { background-color: var(--clr-dark-bg); color: var(--clr-ivory); }
+        .black-bg { background-color: #000; color: #fff; }
 
-        .btn { display: inline-block; padding: 1rem 2rem; font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; border: 1px solid transparent; cursor: pointer; transition: var(--transition); }
+        .btn { display: inline-block; padding: 1rem 2rem; font-family: var(--font-main); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; border: 1px solid transparent; cursor: pointer; transition: var(--transition); border-radius: 4px; }
         .btn-solid { background-color: var(--clr-gold); color: var(--clr-ivory); }
         .btn-solid:hover { background-color: var(--clr-gold-hover); }
-        .btn-outline { border-color: var(--clr-ivory); color: var(--clr-ivory); }
-        .btn-outline:hover { background-color: var(--clr-ivory); color: var(--clr-black); }
-
-        .layout-grid-2 { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); }
-        .layout-grid-3 { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); }
-        @media (min-width: 768px) {
-            .layout-grid-2 { grid-template-columns: 1fr 1fr; }
-            .layout-grid-3 { grid-template-columns: repeat(3, 1fr); }
-            .align-center { align-items: center; }
-        }
 
         /* Nav & Logo */
-        #navbar { position: fixed; top: 0; width: 100%; padding: 1.5rem 0; z-index: 1000; transition: var(--transition); }
-        #navbar.scrolled { background-color: rgba(26, 26, 26, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        #navbar { position: fixed; top: 0; width: 100%; padding: 1.5rem 0; z-index: 1000; transition: var(--transition); background: transparent; }
+        #navbar.scrolled { background-color: rgba(17, 17, 17, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         .nav-container { width: 90%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         
+        .brand { display: flex; align-items: center; justify-content: flex-start; }
         .brand img, .footer-brand img { max-height: 60px; width: auto; filter: brightness(0) invert(1); transition: var(--transition); } 
         
         @media (max-width: 768px) {
-            .brand img, .footer-brand img { max-height: 54px; } /* Slightly smaller for mobile layout */
+            /* Per user correction: mobile logo 10% smaller */
+            .brand img { transform: scale(0.9); transform-origin: left center; }
         }
         
         .nav-links { list-style: none; display: flex; align-items: center; gap: 2rem; }
-        .nav-links a { color: var(--clr-ivory); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; }
+        .nav-links a { color: var(--clr-ivory); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; }
         .nav-links a:hover { color: var(--clr-gold); }
-        .nav-cta { border: 1px solid var(--clr-gold); padding: 0.5rem 1rem; color: var(--clr-gold) !important; }
-        .nav-cta:hover { background-color: var(--clr-gold); color: var(--clr-ivory) !important; }
 
         .mobile-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 1001; }
         .mobile-toggle span { display: block; width: 25px; height: 2px; background-color: var(--clr-ivory); transition: var(--transition); }
@@ -86,7 +80,7 @@
             .nav-links.nav-active { right: 0; }
         }
 
-        /* Hero & Background Video */
+        /* Hero Section */
         #hero { 
             position: relative; 
             min-height: 100vh; 
@@ -99,134 +93,151 @@
         
         .hero-video-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; overflow: hidden;
         }
         
         .hero-video-bg video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 50%;
-            left: 50%;
+            width: 100%; height: 100%; object-fit: cover;
+            position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
         }
 
         .hero-overlay { 
-            position: absolute; 
-            inset: 0; 
-            background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.7) 100%); 
+            position: absolute; inset: 0; 
+            background: rgba(0,0,0,0.3); 
             z-index: 1; 
         }
         
         .hero-content { 
-            position: relative; 
-            z-index: 2; 
-            width: 90%; 
-            max-width: 900px; 
-            margin: 0 auto; 
-            color: var(--clr-ivory); 
-            text-align: center;
-            padding-top: 4rem;
+            position: relative; z-index: 2; 
+            width: 90%; max-width: 800px; 
+            display: flex; justify-content: center; align-items: center;
         }
         
-        .hero-content h1 { color: var(--clr-ivory); }
-        .hero-content p { font-size: 1.25rem; margin-bottom: 2.5rem; color: #f0f0f0; max-width: 700px; margin-left: auto; margin-right: auto;}
-        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        .hero-center-logo {
+            width: 80%;
+            max-width: 500px;
+            filter: brightness(0) invert(1);
+            animation: fadeIn 1.5s ease;
+        }
 
-        /* How We Work */
-        .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        .feature-card { background: var(--clr-sand); padding: 2rem; display: flex; align-items: center; justify-content: center; text-align: center; border-radius: 4px; }
-        .feature-card h3 { font-size: 1.1rem; margin: 0; }
-        .signature { font-family: var(--font-heading); font-style: italic; margin-top: 2rem; color: var(--clr-gold); }
+        /* Intro Section */
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--clr-text-light);
+        }
+        .intro-text p { margin-bottom: 1.5rem; }
+        .intro-text strong { color: var(--clr-text-main); font-weight: 600; }
 
-        /* Itinerary Filters */
-        .itinerary-filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
-        .filter-btn { background: transparent; border: 1px solid var(--clr-gold); color: var(--clr-text-main); padding: 0.6rem 1.5rem; font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; cursor: pointer; transition: var(--transition); }
-        .filter-btn.active, .filter-btn:hover { background: var(--clr-gold); color: var(--clr-ivory); }
+        /* Destinations Gallery */
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+            padding: 0 12px;
+        }
+        .dest-card {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .dest-card img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .dest-card:hover img { transform: scale(1.08); }
+        .dest-overlay {
+            position: absolute; inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .dest-card:hover .dest-overlay { opacity: 1; }
+        .dest-overlay span {
+            color: white; font-weight: 600; letter-spacing: 0.1em;
+            text-transform: uppercase; font-size: 1.1rem;
+        }
 
-        /* Itinerary Grid & Accordion */
+        /* How We Work Section */
+        .hww-container {
+            display: grid; grid-template-columns: 1fr; gap: var(--space-lg);
+            align-items: center;
+        }
+        @media (min-width: 992px) { .hww-container { grid-template-columns: 1fr 1.2fr; } }
+        
+        .hww-text h2 { font-style: italic; font-weight: 700; margin-bottom: 2rem; }
+        .hww-text p { font-size: 1.1rem; color: #cccccc; margin-bottom: 1.5rem; }
+        .signature { font-style: italic; font-size: 1.2rem; color: #ffffff; margin-top: 2rem; }
+        
+        .hww-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .hww-card { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 2/3; }
+        .hww-card img { width: 100%; height: 100%; object-fit: cover; }
+        .hww-card-text {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 3rem 1rem 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            color: white; font-weight: 600; font-size: 1.1rem; line-height: 1.3;
+        }
+
+        /* Featured Itineraries */
         .itinerary-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-        @media (min-width: 768px) { .itinerary-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1024px) { .itinerary-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 768px) { .itinerary-grid { grid-template-columns: repeat(3, 1fr); } }
 
-        .itinerary-card { background: var(--clr-ivory); box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.5s ease; border-radius: 4px; overflow: hidden; display: block; opacity: 1; transform: scale(1); }
-        .itinerary-card.hidden { display: none; opacity: 0; transform: scale(0.95); }
-        .itinerary-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+        .itinerary-card {
+            position: relative; border-radius: 8px; overflow: hidden;
+            aspect-ratio: 1; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.4s ease;
+        }
+        .itinerary-card:hover { transform: translateY(-5px); }
+        .itinerary-card img { width: 100%; height: 100%; object-fit: cover; }
+        .itinerary-card-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 4rem 1.5rem 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            display: flex; justify-content: space-between; align-items: flex-end;
+            color: white;
+        }
+        .itinerary-card-overlay h3 { margin: 0; font-size: 1.1rem; max-width: 75%; line-height: 1.3; }
+        .itinerary-card-overlay span { font-size: 0.9rem; white-space: nowrap; }
 
-        .itinerary-image { height: 240px; background-color: var(--clr-sand); overflow: hidden; }
-        .itinerary-image img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
-        .itinerary-card:hover .itinerary-image img { transform: scale(1.05); }
-
-        .itinerary-content { padding: 2rem; }
-        .itinerary-content h3 { font-size: 1.3rem; margin-bottom: 0.2rem; }
-        .duration { display: inline-block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--clr-gold); margin-bottom: 1rem; }
-        
-        .itinerary-accordion { margin-top: 1rem; border-top: 1px solid var(--clr-sand); padding-top: 1rem; }
-        .itinerary-accordion summary { list-style: none; cursor: pointer; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--clr-teal); font-weight: 500; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
-        .itinerary-accordion summary:hover { color: var(--clr-gold); }
-        .itinerary-accordion summary::-webkit-details-marker { display: none; }
-        .itinerary-accordion summary::after { content: '+'; font-size: 1.2rem; font-weight: 300; }
-        .itinerary-accordion[open] summary::after { content: '−'; }
-        
-        .day-by-day { list-style: none; font-size: 0.9rem; color: var(--clr-text-light); margin-top: 1.5rem; animation: fadeIn 0.4s ease; }
-        .day-by-day li { padding-bottom: 0.5rem; border-bottom: 1px dashed var(--clr-sand); margin-bottom: 0.5rem; }
-        .day-by-day li:last-child { border: none; margin: 0; padding: 0; }
-        .day-by-day strong { color: var(--clr-text-main); font-weight: 500; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Where You'll Stay */
-        .chip-container { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .chip { padding: 0.5rem 1rem; border: 1px solid var(--clr-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--clr-ivory); }
-        .stay-image img { border-radius: 4px; }
-
-        /* How You'll Adventure & As Seen In */
-        .adventure-block h3 { color: var(--clr-teal); }
-        .adventure-block p { color: var(--clr-text-light); }
-        .press-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 3.5rem; align-items: center; }
-        
-        .press-logo { height: 28px; max-width: 160px; object-fit: contain; filter: grayscale(100%) opacity(0.6); mix-blend-mode: multiply; transition: var(--transition); }
+        /* As Seen In / Partners */
+        .press-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 4rem; align-items: center; }
+        .press-logo { height: 40px; max-width: 200px; object-fit: contain; filter: grayscale(100%) opacity(0.6); transition: var(--transition); }
         .press-logo:hover { filter: grayscale(0%) opacity(1); }
-        .press-fallback { font-family: var(--font-heading); font-size: 1.25rem; color: var(--clr-text-main); opacity: 0.6; }
         
-        .partners-strip span { font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.2em; font-size: 1rem; opacity: 0.7; }
-
-        /* Testimonials */
-        .testimonial-card { background: white; padding: 3rem 2rem; box-shadow: 0 5px 20px rgba(0,0,0,0.03); text-align: left; border-top: 3px solid var(--clr-gold); }
-        .quote { font-family: var(--font-heading); font-style: italic; font-size: 1.1rem; color: var(--clr-text-main); margin-bottom: 2rem; }
-        .author { font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
-        .author span { font-weight: 300; color: var(--clr-text-light); text-transform: none; letter-spacing: 0; }
+        .partners-strip .press-logo { filter: none; opacity: 1; height: 70px; }
 
         /* Form */
-        .luxury-form { background: white; padding: 3rem; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
-        .form-group, .form-group-split { margin-bottom: 1.5rem; position: relative; }
-        .form-group-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 0; }
-        input, textarea { width: 100%; padding: 1rem 0 0.5rem; background: transparent; border: none; border-bottom: 1px solid var(--clr-sand); font-family: var(--font-body); font-size: 1rem; color: var(--clr-text-main); transition: border-color 0.3s ease; }
+        .luxury-form { background: white; padding: 3rem; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); max-width: 700px; margin: 0 auto; }
+        .form-group { margin-bottom: 1.5rem; position: relative; }
+        input, textarea { width: 100%; padding: 1rem 0 0.5rem; background: transparent; border: none; border-bottom: 1px solid var(--clr-sand); font-family: var(--font-main); font-size: 1rem; color: var(--clr-text-main); transition: border-color 0.3s ease; }
         input:focus, textarea:focus { outline: none; border-bottom-color: var(--clr-gold); }
         label { position: absolute; top: 1rem; left: 0; font-size: 1rem; color: var(--clr-text-light); transition: all 0.3s ease; pointer-events: none; }
         input:focus ~ label, input:not(:placeholder-shown) ~ label, textarea:focus ~ label, textarea:not(:placeholder-shown) ~ label { top: -0.5rem; font-size: 0.8rem; color: var(--clr-gold); }
-        .form-note { font-size: 0.8rem; color: var(--clr-text-light); margin-top: 1rem; text-align: center; }
+        
+        .captcha-group { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; font-weight: 600; color: var(--clr-text-light); }
+        .captcha-group input { width: 80px; text-align: center; }
 
         /* Footer */
-        .border-top-gold { border-top: 1px solid rgba(197, 168, 128, 0.3); }
-        .footer-content { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 2rem; }
-        .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: flex-start; }
-        .footer-links a { text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; }
+        .footer-content { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2rem; padding-bottom: 2rem; }
+        .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+        .footer-links a { text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; font-weight: 600; }
         .footer-links a:hover { color: var(--clr-gold); }
         .footer-copy { font-size: 0.8rem; color: #888; }
+        
+        /* Per user correction: year font color dark blue */
         #year { color: darkblue; }
 
-        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .reveal-delay { transition-delay: 0.2s; }
-        .reveal-delay-2 { transition-delay: 0.4s; }
     </style>
 </head>
 <body>
@@ -234,304 +245,194 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="brand">
-                <img src="https://california-journeys.com/_assets/media/3719ae62e981088a31a9d2c697a223ee.png" alt="California Journeys">
+                <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/California-Journeys-Logo-Black.png?resize=1080%2C492&ssl=1" alt="California Journeys">
             </a>
             <button class="mobile-toggle" aria-label="Toggle navigation">
                 <span></span><span></span><span></span>
             </button>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
+                <li><a href="#destinations">Destinations</a></li>
                 <li><a href="#journeys">Journeys</a></li>
-                <li><a href="#stay">Where You’ll Stay</a></li>
-                <li><a href="#adventure">How You’ll Adventure</a></li>
-                <li><a href="#reviews">Reviews</a></li>
-                <li><a href="#contact" class="nav-cta">Request A Quote</a></li>
+                <li><a href="#contact" class="nav-cta">Enquire</a></li>
             </ul>
         </div>
     </nav>
 
     <header id="hero">
-        
         <div class="hero-video-bg">
             <video autoplay muted loop playsinline>
                 <source src="https://northern-journeys.com/wp-content/uploads/2025/10/Northern-Journeys-Hero.mp4" type="video/mp4">
             </video>
         </div>
-        
         <div class="hero-overlay"></div>
-        
-        <div class="hero-content reveal">
-            <h1>Experience The California Journeys Difference</h1>
-            <p>Curated private luxury travel from the cityscapes of Los Angeles to the majestic redwoods of Yosemite.</p>
-            <div class="hero-buttons">
-                <a href="#about" class="btn btn-outline">Learn More</a>
-                <a href="#contact" class="btn btn-solid">Request A Quote</a>
-            </div>
+        <div class="hero-content">
+            <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/California-Journeys-Logo-Black.png?resize=1080%2C492&ssl=1" alt="California Journeys" class="hero-center-logo">
         </div>
     </header>
 
     <main>
         <section id="about" class="section-padding light-bg">
-            <div class="container layout-grid-2">
-                <div class="about-text reveal">
-                    <span class="eyebrow">The Experience</span>
+            <div class="container reveal">
+                <div class="intro-text">
+                    <h2>Privately Guided National Park Journeys<br>in California</h2>
+                    <p><strong>California Journeys</strong> is a Luxury Adventure Travel Company dedicated to curating exceptional journeys for discerning travelers around California.</p>
+                    <p>Our mission is to craft tailor-made experiences that combine adventure and comfort. Every trip is designed to immerse you in California's most extraordinary destinations while ensuring seamless service from start to finish.</p>
+                    <p>With decades of combined expertise in high-end adventure travel, our team has built strong relationships with the finest lodges, private villas, exclusive safari camps, private guides, local outfitters and service providers.</p>
+                    <p>We believe in creating experiences that are as enriching as they are indulgent, prioritizing environmental stewardship, cultural respect, and meaningful connections.</p>
+                    <p>Integrity, excellence, and personalization are at the heart of everything we do.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="destinations" class="black-bg section-padding">
+            <h2 class="section-title section-title-light">- DESTINATIONS -</h2>
+            <div class="destinations-grid reveal">
+                <div class="dest-card">
+                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Yosemite.jpg?resize=400%2C410&ssl=1" alt="Yosemite" loading="lazy">
+                    <div class="dest-overlay"><span>Yosemite</span></div>
+                </div>
+                <div class="dest-card">
+                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Sequoia.jpg?resize=400%2C410&ssl=1" alt="Sequoia" loading="lazy">
+                    <div class="dest-overlay"><span>Sequoia</span></div>
+                </div>
+                <div class="dest-card">
+                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/BigSur.jpg?resize=400%2C410&ssl=1" alt="Big Sur" loading="lazy">
+                    <div class="dest-overlay"><span>Big Sur</span></div>
+                </div>
+                <div class="dest-card">
+                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/JoshuaTree.jpg?resize=400%2C410&ssl=1" alt="Joshua Tree" loading="lazy">
+                    <div class="dest-overlay"><span>Joshua Tree</span></div>
+                </div>
+                <div class="dest-card">
+                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/DeathValley.jpg?resize=400%2C410&ssl=1" alt="Death Valley" loading="lazy">
+                    <div class="dest-overlay"><span>Death Valley</span></div>
+                </div>
+                <div class="dest-card">
+                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Monterrey.jpg?resize=400%2C410&ssl=1" alt="Monterrey" loading="lazy">
+                    <div class="dest-overlay"><span>Monterrey</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dark-bg section-padding">
+            <div class="container hww-container">
+                <div class="hww-text reveal">
                     <h2>How We Work</h2>
-                    <p class="lead">With California Journeys, expect nothing less than gourmet meals, iconic lodges, and adventures that span from the cityscapes of Los Angeles to the vineyards of Napa Valley and the redwoods of Yosemite.</p>
+                    <p>With California Journeys, expect nothing less than gourmet meals, iconic lodges, and adventures that span from the cityscapes of Los Angeles to the vineyards of Napa Valley and the redwoods of Yosemite.</p>
                     <p>Our commitment to sustainable travel and support for local communities means you can enjoy a luxury experience that respects the environment and enriches local culture.</p>
                     <p class="signature">~ The California Journeys Team</p>
                 </div>
-                <div class="about-features reveal reveal-delay">
-                    <div class="feature-card"><h3>Private Transfers & Luxury Vehicles</h3></div>
-                    <div class="feature-card"><h3>Custom Itineraries & Private Guides</h3></div>
-                    <div class="feature-card"><h3>Private Chefs & Gourmet Picnics</h3></div>
-                    <div class="feature-card"><h3>Luxury Lodges & Private Villas</h3></div>
+                <div class="hww-cards reveal reveal-delay">
+                    <div class="hww-card">
+                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Northern-Journeys-How-we-work-1.jpg?resize=467%2C713&ssl=1" alt="Private Transfers" loading="lazy">
+                        <div class="hww-card-text">Private Transfers<br>& Luxury Vehicles</div>
+                    </div>
+                    <div class="hww-card">
+                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Northern-Journeys-How-we-work-2.jpg?resize=467%2C715&ssl=1" alt="Custom Itineraries" loading="lazy">
+                        <div class="hww-card-text">Custom Itineraries<br>& Private Guides</div>
+                    </div>
+                    <div class="hww-card">
+                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Northern-Journeys-How-we-work-3.jpg?resize=478%2C717&ssl=1" alt="Luxury Lodges" loading="lazy">
+                        <div class="hww-card-text">Luxury Lodges &<br>Private Villas</div>
+                    </div>
+                    <div class="hww-card">
+                        <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Northern-Journeys-How-we-work-4.jpg?resize=464%2C716&ssl=1" alt="Private Chefs" loading="lazy">
+                        <div class="hww-card-text">Private Chefs &<br>Gourmet Picnics</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="journeys" class="section-padding sand-bg">
-            <div class="container text-center reveal">
-                <span class="eyebrow">Browse Our California Journeys</span>
-                <h2>Featured Itineraries</h2>
+        <section id="journeys" class="section-padding light-bg">
+            <h2 class="section-title">- FEATURED ITINERARIES -</h2>
+            <div class="container itinerary-grid">
                 
-                <div class="itinerary-filters">
-                    <button class="filter-btn active" data-filter="all">All Journeys</button>
-                    <button class="filter-btn" data-filter="yosemite">Yosemite & Sierras</button>
-                    <button class="filter-btn" data-filter="desert">Joshua Tree & Desert</button>
-                    <button class="filter-btn" data-filter="coast">Big Sur & Coast</button>
-                </div>
-            </div>
-            
-            <div class="container itinerary-grid mt-4">
-                <article class="itinerary-card reveal" data-category="yosemite">
-                    <div class="itinerary-image"><img src="https://images.unsplash.com/photo-1527482531641-76a087796d8e?auto=format&fit=crop&q=80&w=800" alt="Privately Guided Yosemite" loading="lazy"></div>
-                    <div class="itinerary-content">
+                <article class="itinerary-card reveal">
+                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Yosemite.jpg?resize=400%2C410&ssl=1" alt="Privately Guided Yosemite" loading="lazy">
+                    <div class="itinerary-card-overlay">
                         <h3>Privately Guided Yosemite</h3>
-                        <span class="duration">5 Days</span>
-                        <details class="itinerary-accordion">
-                            <summary>View Daily Itinerary</summary>
-                            <ul class="day-by-day">
-                                <li><strong>Day 1:</strong> Arrive Fresno. Overnight Tenaya</li>
-                                <li><strong>Day 2:</strong> Yosemite Valley. Overnight Tenaya</li>
-                                <li><strong>Day 3:</strong> Yosemite High Country. Overnight Tenaya</li>
-                                <li><strong>Day 4:</strong> Giant Sequoia Redwood Hike. Overnight Tenaya</li>
-                                <li><strong>Day 5:</strong> Depart Fresno</li>
-                            </ul>
-                        </details>
+                        <span>5 Days</span>
                     </div>
                 </article>
 
-                <article class="itinerary-card reveal reveal-delay" data-category="yosemite">
-                    <div class="itinerary-image"><img src="https://images.unsplash.com/photo-1544252890-a4005bd5da53?auto=format&fit=crop&q=80&w=800" alt="Privately Guided Sequoia & Yosemite" loading="lazy"></div>
-                    <div class="itinerary-content">
+                <article class="itinerary-card reveal reveal-delay">
+                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Sequoia.jpg?resize=400%2C410&ssl=1" alt="Privately Guided Sequoia & Yosemite" loading="lazy">
+                    <div class="itinerary-card-overlay">
                         <h3>Privately Guided Sequoia & Yosemite</h3>
-                        <span class="duration">6 Days</span>
-                        <details class="itinerary-accordion">
-                            <summary>View Daily Itinerary</summary>
-                            <ul class="day-by-day">
-                                <li><strong>Day 1:</strong> Arrive Fresno. Overnight Wuksachi Lodge</li>
-                                <li><strong>Day 2:</strong> King’s Canyon & Sequoia NP. Overnight Wuksachi Lodge</li>
-                                <li><strong>Day 3:</strong> Head to Yosemite. Overnight Tenaya Lodge</li>
-                                <li><strong>Day 4:</strong> Yosemite Valley. Overnight Tenaya Lodge</li>
-                                <li><strong>Day 5:</strong> Yosemite High Country. Overnight Tenaya Lodge</li>
-                                <li><strong>Day 6:</strong> Depart Fresno</li>
-                            </ul>
-                        </details>
+                        <span>6 Days</span>
                     </div>
                 </article>
 
-                <article class="itinerary-card reveal reveal-delay-2" data-category="desert">
-                    <div class="itinerary-image"><img src="https://images.unsplash.com/photo-1517409440608-27b0373df99d?auto=format&fit=crop&q=80&w=800" alt="Privately Guided Joshua Tree & Death Valley" loading="lazy"></div>
-                    <div class="itinerary-content">
-                        <h3>Joshua Tree & Death Valley</h3>
-                        <span class="duration">6 Days</span>
-                        <details class="itinerary-accordion">
-                            <summary>View Daily Itinerary</summary>
-                            <ul class="day-by-day">
-                                <li><strong>Day 1:</strong> Arrive Palm Springs. Hike Indian Canyon. Overnight Campbell House</li>
-                                <li><strong>Day 2:</strong> Joshua Tree NP. Overnight Campbell House</li>
-                                <li><strong>Day 3:</strong> Head to Death Valley. Badwater Salt Flats. Overnight Inn at Death Valley</li>
-                                <li><strong>Day 4:</strong> Crater Hike, Mosaic Canyon, Dunes. Overnight Inn at Death Valley</li>
-                                <li><strong>Day 5:</strong> Ranches & Rock Faces. Overnight Inn at Death Valley</li>
-                                <li><strong>Day 6:</strong> Sunrise Zabriskie Point, Depart Las Vegas</li>
-                            </ul>
-                        </details>
+                <article class="itinerary-card reveal reveal-delay">
+                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/JoshuaTree.jpg?resize=400%2C410&ssl=1" alt="Privately Guided Joshua Tree & Death Valley" loading="lazy">
+                    <div class="itinerary-card-overlay">
+                        <h3>Privately Guided Joshua Tree & Death Valley</h3>
+                        <span>6 Days</span>
                     </div>
                 </article>
-
-                <article class="itinerary-card reveal" data-category="desert">
-                    <div class="itinerary-image"><img src="https://images.unsplash.com/photo-1563245465-d055a40b4ec7?auto=format&fit=crop&q=80&w=800" alt="Privately Guided Joshua Tree" loading="lazy"></div>
-                    <div class="itinerary-content">
-                        <h3>Privately Guided Joshua Tree</h3>
-                        <span class="duration">4 Days</span>
-                        <details class="itinerary-accordion">
-                            <summary>View Daily Itinerary</summary>
-                            <ul class="day-by-day">
-                                <li><strong>Day 1:</strong> Arrive Palm Springs. Hike Indian Canyon. Overnight Campbell House</li>
-                                <li><strong>Day 2:</strong> Joshua Tree NP. Overnight Campbell House</li>
-                                <li><strong>Day 3:</strong> Joshua Tree NP. Overnight Campbell House</li>
-                                <li><strong>Day 4:</strong> Depart Palm Springs</li>
-                            </ul>
-                        </details>
-                    </div>
-                </article>
-
-                <article class="itinerary-card reveal reveal-delay" data-category="coast">
-                    <div class="itinerary-image"><img src="https://images.unsplash.com/photo-1508004526072-0be43baea5e1?auto=format&fit=crop&q=80&w=800" alt="Privately Guided Big Sur & Monterey Peninsula" loading="lazy"></div>
-                    <div class="itinerary-content">
-                        <h3>Big Sur & Monterey Peninsula</h3>
-                        <span class="duration">5 Days</span>
-                        <details class="itinerary-accordion">
-                            <summary>View Daily Itinerary</summary>
-                            <ul class="day-by-day">
-                                <li><strong>Day 1:</strong> Arrive San Jose, head to Big Sur. Overnight Post Ranch Inn</li>
-                                <li><strong>Day 2:</strong> Full Day Big Sur. Overnight Post Ranch Inn</li>
-                                <li><strong>Day 3:</strong> Head to Monterey, sunset catamaran. Overnight Carmel Valley Ranch</li>
-                                <li><strong>Day 4:</strong> Bike, Hike, Kayak. Overnight Carmel Valley Ranch</li>
-                                <li><strong>Day 5:</strong> Depart San Jose</li>
-                            </ul>
-                        </details>
-                    </div>
-                </article>
-
-                <article class="itinerary-card reveal reveal-delay-2" data-category="coast yosemite">
-                    <div class="itinerary-image"><img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&q=80&w=800" alt="Privately Guided Yosemite, Carmel & Big Sur" loading="lazy"></div>
-                    <div class="itinerary-content">
-                        <h3>Yosemite, Carmel & Big Sur</h3>
-                        <span class="duration">7 Days</span>
-                        <details class="itinerary-accordion">
-                            <summary>View Daily Itinerary</summary>
-                            <ul class="day-by-day">
-                                <li><strong>Day 1:</strong> Arrive SF. Head to Yosemite. Overnight Rush Creek Lodge</li>
-                                <li><strong>Day 2:</strong> Yosemite Valley. Overnight Rush Creek Lodge</li>
-                                <li><strong>Day 3:</strong> Yosemite High Country. Overnight Rush Creek Lodge</li>
-                                <li><strong>Day 4:</strong> Head to Carmel. Overnight Bernardus Lodge</li>
-                                <li><strong>Day 5:</strong> Kayak, bike, Aquarium. Overnight Bernardus Lodge</li>
-                                <li><strong>Day 6:</strong> Full Day Big Sur. Overnight Bernardus Lodge</li>
-                                <li><strong>Day 7:</strong> San Francisco, Depart</li>
-                            </ul>
-                        </details>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section id="stay" class="section-padding dark-bg">
-            <div class="container layout-grid-2 align-center">
-                <div class="stay-image reveal"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800" alt="Luxury accommodation in California" loading="lazy"></div>
-                <div class="stay-text reveal reveal-delay">
-                    <h2>Where You’ll Stay</h2>
-                    <p>Explore iconic destinations like Yosemite, Sequoia, and Joshua Tree with privately guided tours that promise not just a trip, but an exploration of the awe-inspiring landscapes California has to offer.</p>
-                    <p>Stay in exceptional accommodations, from luxury lodges and private villas to exclusive hotels and secret spots, each selected to provide a gateway to a deeper connection with the natural beauty and serenity of the surroundings.</p>
-                    <div class="chip-container mt-2">
-                        <span class="chip">National Park Lodges</span><span class="chip">Private Villas</span>
-                        <span class="chip">Luxury Hotels</span><span class="chip">Secret Spots</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="adventure" class="section-padding light-bg">
-            <div class="container text-center reveal"><h2>How You’ll Adventure</h2></div>
-            <div class="container layout-grid-3 mt-4">
-                <div class="adventure-block reveal">
-                    <h3>Gourmet Picnics</h3>
-                    <p>Picture yourself seated on a plush blanket spread over the meadows of Yosemite Valley, with the iconic granite cliffs of El Capitan and Half Dome towering above.</p>
-                </div>
-                <div class="adventure-block reveal reveal-delay">
-                    <h3>Private Guides</h3>
-                    <p>Discover California's national parks with expert guides. Experience personalized tours through Yosemite, Sequoia, and beyond, unlocking hidden gems and stories.</p>
-                </div>
-                <div class="adventure-block reveal reveal-delay-2">
-                    <h3>Luxury Stays</h3>
-                    <p>Indulge in luxury amidst California's national parks. Stay in exclusive lodges or resorts near Yosemite, Joshua Tree, and Sequoia, blending comfort with nature.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="seen-in" class="padding-small sand-bg border-top-bottom">
-            <div class="container text-center reveal">
-                <span class="eyebrow mb-2">As Seen In</span>
-                <div class="press-strip">
-                    <img class="press-logo" src="https://upload.wikimedia.org/wikipedia/commons/7/75/National_Geographic_Logo.svg" alt="National Geographic" onerror="this.outerHTML='<span class=\'press-fallback\'>National Geographic</span>'">
-                    <img class="press-logo" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Travel_Channel_logo.svg" alt="Travel Channel" onerror="this.outerHTML='<span class=\'press-fallback\'>Travel Channel</span>'">
-                    <img class="press-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Outside_magazine_logo.svg" alt="Outside" onerror="this.outerHTML='<span class=\'press-fallback\'>Outside</span>'">
-                    <img class="press-logo" src="https://upload.wikimedia.org/wikipedia/commons/7/77/The_New_York_Times_logo.png" alt="The New York Times" onerror="this.outerHTML='<span class=\'press-fallback\'>The New York Times</span>'">
-                    <span class="press-fallback">Gentleman’s Journal</span>
-                    <img class="press-logo" src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Vogue_logo.svg" alt="Vogue" onerror="this.outerHTML='<span class=\'press-fallback\'>Vogue</span>'">
-                    <span class="press-fallback">Men’s Journal</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="reviews" class="section-padding light-bg">
-            <div class="container text-center reveal"><h2>What Our Clients Say</h2></div>
-            <div class="container layout-grid-3 mt-4">
-                <div class="testimonial-card reveal">
-                    <p class="quote">“Exploring the cityscapes of Los Angeles, the serene vineyards of Napa Valley, and the majestic redwoods of Yosemite... The attention to detail and personalized experiences provided by their team made my California dream trip a reality.”</p>
-                    <p class="author">- Miguel R.<br><span>Mexico City, MX</span></p>
-                </div>
-                <div class="testimonial-card reveal reveal-delay">
-                    <p class="quote">“As an avid traveler, I've experienced many tours, but nothing compares to California Journeys. Their knowledgeable guides, luxurious accommodations, and seamless travel arrangements exceeded my expectations.”</p>
-                    <p class="author">- Larissa L.<br><span>Steamboat Springs, CO</span></p>
-                </div>
-                <div class="testimonial-card reveal reveal-delay-2">
-                    <p class="quote">“California Journeys’ passion for sustainable travel and supporting local communities resonated with me deeply. I was mesmerized by the diverse landscapes, from Joshua Tree to Big Sur. Every moment was a discovery.”</p>
-                    <p class="author">- Luca T.<br><span>Zurich, Switzerland</span></p>
-                </div>
-            </div>
-        </section>
-
-        <section id="partners" class="padding-small sand-bg border-top-bottom">
-            <div class="container text-center reveal">
-                <span class="eyebrow mb-2">Our Partners</span>
-                <div class="press-strip partners-strip">
-                    <span>Adventure Portfolio</span><span>LUX SURF</span><span>Adventure International</span>
-                </div>
+                
             </div>
         </section>
 
         <section id="contact" class="section-padding light-bg">
-            <div class="container layout-grid-2">
-                <div class="contact-info reveal">
-                    <h2>Request A Quote</h2>
-                    <p>Start planning your private luxury journey today. Fill out the form or reach out to our team directly.</p>
-                    <div class="contact-details mt-2">
-                        <p><strong>Call:</strong> <a href="tel:888-664-3865">888-664-3865</a></p>
-                        <p><strong>E-mail:</strong> <a href="mailto:info@california-journeys.com">info@california-journeys.com</a></p>
-                    </div>
-                </div>
-                <div class="contact-form-container reveal reveal-delay">
-                    <form action="https://formsubmit.co/info@california-journeys.com" method="POST" class="luxury-form">
-                        <input type="hidden" name="_subject" value="New California Journeys Quote Request">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_template" value="table">
+            <h2 class="section-title">- ENQUIRE -</h2>
+            <div class="container reveal">
+                <form action="https://formsubmit.co/admin@california-journeys.com" method="POST" class="luxury-form">
+                    <input type="hidden" name="_subject" value="New California Journeys Quote Request">
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <p class="text-center mb-2" style="color: var(--clr-text-light);">Drop us a line below and our team will get back to you shortly to begin planning your journey.</p>
 
-                        <div class="form-group"><input type="text" name="name" id="name" required placeholder=" "><label for="name">Full Name</label></div>
-                        <div class="form-group"><input type="email" name="email" id="email" required placeholder=" "><label for="email">Email Address</label></div>
-                        <div class="form-group"><input type="tel" name="phone" id="phone" required placeholder=" "><label for="phone">Phone Number</label></div>
-                        <div class="form-group-split">
-                            <div class="form-group"><input type="text" name="dates" id="dates" required placeholder=" "><label for="dates">Travel Dates</label></div>
-                            <div class="form-group"><input type="text" name="length" id="length" required placeholder=" "><label for="length">Trip Length</label></div>
-                        </div>
-                        <div class="form-group"><input type="text" name="destinations" id="destinations" required placeholder=" "><label for="destinations">Preferred Destinations</label></div>
-                        <div class="form-group"><textarea name="message" id="message" rows="4" required placeholder=" "></textarea><label for="message">Message</label></div>
-                        <button type="submit" class="btn btn-solid w-100">Send Inquiry</button>
-                    </form>
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" required placeholder=" ">
+                        <label for="name">Full Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" required placeholder=" ">
+                        <label for="email">Email Address</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" id="message" rows="4" required placeholder=" "></textarea>
+                        <label for="message">Message / Travel Details</label>
+                    </div>
+                    
+                    <div class="captcha-group">
+                        <span>6 + 7 =</span>
+                        <input type="number" id="math-captcha" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-solid w-100" id="submit-btn">Submit Enquiry</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="partners" class="black-bg padding-small">
+            <h2 class="section-title section-title-light">- OUR PARTNERS -</h2>
+            <div class="container text-center reveal">
+                <div class="press-strip partners-strip">
+                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Adventure-Portfolio-Logo-Gradient-Dark-Back.png?resize=1000%2C366&ssl=1" alt="Adventure Portfolio" class="press-logo">
+                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/LUXSURF-Logo-BLACK.png?resize=1080%2C290&ssl=1" alt="LUX SURF" class="press-logo" style="filter: brightness(0) invert(1);">
+                    <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/logo-transp-back-lo.png?resize=1000%2C500&ssl=1" alt="Adventure International" class="press-logo">
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="dark-bg padding-small border-top-gold">
+    <footer class="black-bg padding-small" style="border-top: 1px solid #333;">
         <div class="container footer-content">
             <div class="footer-brand">
-                <img src="https://california-journeys.com/_assets/media/3719ae62e981088a31a9d2c697a223ee.png" alt="California Journeys">
+                <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/California-Journeys-Logo-Black.png?resize=1080%2C492&ssl=1" alt="California Journeys">
             </div>
             <div class="footer-links">
-                <a href="#about">About</a><a href="#journeys">Journeys</a><a href="#contact">Contact</a>
+                <a href="#about">About</a>
+                <a href="#destinations">Destinations</a>
+                <a href="#contact">Contact</a>
             </div>
-            <div class="footer-copy">&copy; <span id="year"></span> California Journeys. All rights reserved.</div>
+            <div class="footer-copy">
+                <p>www.california-journeys.com | admin@california-journeys.com</p>
+                <p>&copy; <span id="year"></span> California Journeys. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -565,37 +466,18 @@
             }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
             document.querySelectorAll('.reveal').forEach(el => revealOnScroll.observe(el));
-
-            // Itinerary Filters
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const itineraryCards = document.querySelectorAll('.itinerary-card');
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    const filterValue = btn.getAttribute('data-filter');
-                    
-                    itineraryCards.forEach(card => {
-                        if(filterValue === 'all' || card.getAttribute('data-category').includes(filterValue)) {
-                            card.classList.remove('hidden');
-                        } else {
-                            card.classList.add('hidden');
-                        }
-                    });
-                });
-            });
             
-            // Auto-close accordions when another opens
-            const accordions = document.querySelectorAll('.itinerary-accordion');
-            accordions.forEach(acc => {
-                acc.addEventListener('toggle', (e) => {
-                    if (acc.open) {
-                        accordions.forEach(otherAcc => {
-                            if (otherAcc !== acc && otherAcc.open) otherAcc.removeAttribute('open');
-                        });
-                    }
-                });
+            // Math Captcha Validation
+            const form = document.querySelector('.luxury-form');
+            const captchaInput = document.getElementById('math-captcha');
+            
+            form.addEventListener('submit', function(e) {
+                if(parseInt(captchaInput.value) !== 13) {
+                    e.preventDefault();
+                    alert('Please enter the correct answer for the math question.');
+                    captchaInput.value = '';
+                    captchaInput.focus();
+                }
             });
         });
     </script>
