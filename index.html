@@ -66,8 +66,11 @@
         #navbar.scrolled { background-color: rgba(26, 26, 26, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         .nav-container { width: 90%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         
-        /* Logo size increased by ~30% from 45px to 60px */
         .brand img, .footer-brand img { max-height: 60px; width: auto; filter: brightness(0) invert(1); transition: var(--transition); } 
+        
+        @media (max-width: 768px) {
+            .brand img, .footer-brand img { max-height: 54px; } /* Slightly smaller for mobile layout */
+        }
         
         .nav-links { list-style: none; display: flex; align-items: center; gap: 2rem; }
         .nav-links a { color: var(--clr-ivory); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; }
@@ -96,22 +99,18 @@
         
         .hero-video-bg {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 100vh;
-            transform: translate(-50%, -50%);
-            pointer-events: none; /* Prevents user interacting with iframe */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 0;
             overflow: hidden;
         }
         
-        /* Forces the iframe to act like background-size: cover */
-        .hero-video-bg iframe {
-            width: 100vw;
-            height: 56.25vw; /* 16:9 Aspect Ratio */
-            min-height: 100vh;
-            min-width: 177.77vh; /* 16:9 Aspect Ratio */
+        .hero-video-bg video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -216,11 +215,12 @@
 
         /* Footer */
         .border-top-gold { border-top: 1px solid rgba(197, 168, 128, 0.3); }
-        .footer-content { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2rem; }
-        .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+        .footer-content { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 2rem; }
+        .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: flex-start; }
         .footer-links a { text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; }
         .footer-links a:hover { color: var(--clr-gold); }
         .footer-copy { font-size: 0.8rem; color: #888; }
+        #year { color: darkblue; }
 
         /* Animations */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
@@ -253,13 +253,9 @@
     <header id="hero">
         
         <div class="hero-video-bg">
-            <iframe 
-                src="https://go.screenpal.com/player/cOeXfJnZ4hW?ff=1&ahc=1&dcc=1&tl=0&bg=transparent&share=0&download=0&embed=1&cl=0&autoplay=1&muted=1&loop=1&controls=0" 
-                frameborder="0" 
-                scrolling="no" 
-                allowfullscreen="true"
-                allow="autoplay; fullscreen">
-            </iframe>
+            <video autoplay muted loop playsinline>
+                <source src="https://northern-journeys.com/wp-content/uploads/2025/10/Northern-Journeys-Hero.mp4" type="video/mp4">
+            </video>
         </div>
         
         <div class="hero-overlay"></div>
