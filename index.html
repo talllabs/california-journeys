@@ -1,3 +1,15 @@
+Here is the complete, updated `index.html`.
+
+I have implemented all of your requests:
+
+1. **Hero Section**: Stripped away all the text and buttons. It now perfectly centers the California Journeys logo over the autoplaying background video.
+2. **Hidden Navigation**: The top navigation bar is completely hidden on load. Once the user scrolls below the fold (past the hero video), the sleek black navigation bar gracefully drops down, presenting the logo on the left and the nav items on the right.
+3. **3x3 Destinations Grid**: I updated the CSS to force exactly 3 columns across on desktop. I also added three extra iconic California destinations (Lake Tahoe, Napa Valley, and Channel Islands) using aesthetic stock photography so it creates a perfect 3x3 grid (9 items total).
+4. **"As Seen In" Logos**: I replaced the previous placeholder text/logos with the exact three image links you provided.
+
+### `index.html`
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +29,7 @@
             --clr-sand: #E6E2DD;
             --clr-gold: #C5A880; 
             --clr-gold-hover: #b0936b; 
-            --clr-orange: #ff914d; /* Updated to match the Learn More button in screenshot */
+            --clr-orange: #ff914d;
             --clr-teal: #4A6B6C;
             --clr-text-main: #2D2D2D; 
             --clr-text-light: #666666;
@@ -57,10 +69,20 @@
         .btn-solid { background-color: var(--clr-orange); color: #fff; }
         .btn-solid:hover { background-color: #e07a3e; }
 
-        /* Nav & Logo */
-        #navbar { position: fixed; top: 0; width: 100%; padding: 1.5rem 0; z-index: 1000; transition: var(--transition); background: transparent; }
-        #navbar.scrolled { background-color: rgba(17, 17, 17, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-        .nav-container { width: 90%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: flex-start; align-items: center; }
+        /* Hidden Nav & Scroll Dropdown */
+        #navbar { 
+            position: fixed; top: 0; width: 100%; padding: 1rem 0; z-index: 1000; 
+            transition: var(--transition); 
+            background-color: rgba(17, 17, 17, 0.95); 
+            backdrop-filter: blur(10px); 
+            transform: translateY(-100%); /* Hidden initially above the screen */
+        }
+        #navbar.scrolled { 
+            transform: translateY(0); /* Drops down on scroll */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
+        }
+        
+        .nav-container { width: 90%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         
         .brand { flex-grow: 1; }
         .brand img, .footer-brand img { max-height: 60px; width: auto; filter: brightness(0) invert(1); transition: var(--transition); } 
@@ -81,13 +103,13 @@
             .nav-links.nav-active { right: 0; }
         }
 
-        /* Hero Section */
+        /* Hero Section (Video + Logo Only) */
         #hero { 
             position: relative; 
-            min-height: 100vh; 
+            height: 100vh; 
             display: flex; 
-            align-items: flex-end; /* Align to bottom like the screenshot */
-            padding-bottom: 10%;
+            align-items: center; 
+            justify-content: center;
             overflow: hidden; 
             background-color: var(--clr-black);
         }
@@ -106,7 +128,7 @@
 
         .hero-overlay { 
             position: absolute; inset: 0; 
-            background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 100%); 
+            background: rgba(0,0,0,0.4); 
             z-index: 1; 
         }
         
@@ -114,14 +136,15 @@
             position: relative; z-index: 2; 
             width: 90%; max-width: 1400px; 
             margin: 0 auto;
-            color: var(--clr-ivory); 
+            display: flex; justify-content: center; align-items: center;
         }
 
-        .hero-text-block {
+        .hero-center-logo {
+            width: 80%;
             max-width: 600px;
+            filter: brightness(0) invert(1);
+            animation: fadeIn 1.5s ease;
         }
-
-        .hero-content h1 { font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 2rem; font-weight: 500; }
 
         /* Intro Section */
         .intro-text {
@@ -134,13 +157,17 @@
         .intro-text p { margin-bottom: 1.5rem; }
         .intro-text strong { color: var(--clr-text-main); font-weight: 600; }
 
-        /* Destinations Gallery */
+        /* 3x3 Destinations Gallery */
         .destinations-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 12px;
             padding: 0 12px;
         }
+        
+        @media (max-width: 992px) { .destinations-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 576px) { .destinations-grid { grid-template-columns: 1fr; } }
+
         .dest-card {
             position: relative;
             aspect-ratio: 1;
@@ -162,7 +189,7 @@
         .dest-card:hover .dest-overlay { opacity: 1; }
         .dest-overlay span {
             color: white; font-weight: 600; letter-spacing: 0.1em;
-            text-transform: uppercase; font-size: 1.1rem;
+            text-transform: uppercase; font-size: 1.1rem; text-align: center;
         }
 
         /* How We Work Section */
@@ -278,11 +305,8 @@
             </video>
         </div>
         <div class="hero-overlay"></div>
-        <div class="hero-content reveal">
-            <div class="hero-text-block">
-                <h1>Experience The<br>California Journeys<br>Difference</h1>
-                <a href="#about" class="btn btn-solid">Learn More &rarr;</a>
-            </div>
+        <div class="hero-content">
+            <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/California-Journeys-Logo-Black.png?resize=1080%2C492&ssl=1" alt="California Journeys" class="hero-center-logo">
         </div>
     </header>
 
@@ -326,6 +350,18 @@
                 <div class="dest-card">
                     <img src="https://i0.wp.com/northern-journeys.com/wp-content/uploads/2025/10/Monterrey.jpg?resize=400%2C410&ssl=1" alt="Monterrey" loading="lazy">
                     <div class="dest-overlay"><span>Monterrey</span></div>
+                </div>
+                <div class="dest-card">
+                    <img src="https://images.unsplash.com/photo-1518599904199-0ca897819ddb?auto=format&fit=crop&q=80&w=400" alt="Lake Tahoe" loading="lazy">
+                    <div class="dest-overlay"><span>Lake Tahoe</span></div>
+                </div>
+                <div class="dest-card">
+                    <img src="https://images.unsplash.com/photo-1590393275627-0c48e8a60421?auto=format&fit=crop&q=80&w=400" alt="Napa Valley" loading="lazy">
+                    <div class="dest-overlay"><span>Napa Valley</span></div>
+                </div>
+                <div class="dest-card">
+                    <img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&q=80&w=400" alt="Channel Islands" loading="lazy">
+                    <div class="dest-overlay"><span>Channel Islands</span></div>
                 </div>
             </div>
         </section>
@@ -501,10 +537,9 @@
             <div class="container text-center reveal">
                 <span class="eyebrow mb-2">As Seen In</span>
                 <div class="press-strip">
-                    <img class="press-logo" src="https://upload.wikimedia.org/wikipedia/commons/7/75/National_Geographic_Logo.svg" alt="National Geographic">
-                    <img class="press-logo" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Travel_Channel_logo.svg" alt="Travel Channel">
-                    <img class="press-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Outside_magazine_logo.svg" alt="Outside">
-                    <img class="press-logo" src="https://upload.wikimedia.org/wikipedia/commons/7/77/The_New_York_Times_logo.png" alt="The New York Times">
+                    <img class="press-logo" src="https://cdn.outsideonline.com/wp-content/uploads/2021/07/logo-outside.png" alt="Outside Magazine">
+                    <img class="press-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQELLwkp18y6gwOAXptpnGXVYv5yHyqopI5Sw&s" alt="National Geographic">
+                    <img class="press-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtOokeOMfcLJ6rStj7BO1UfTEqFNfCBF9QJg&s" alt="The New York Times">
                 </div>
             </div>
         </section>
@@ -583,10 +618,15 @@
             mobileToggle.addEventListener('click', () => navLinks.classList.toggle('nav-active'));
             navItems.forEach(item => item.addEventListener('click', () => navLinks.classList.remove('nav-active')));
 
-            // Sticky Header
+            // Sticky Header (Hidden until scrolled past window height)
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
-                navbar.classList.toggle('scrolled', window.scrollY > 50);
+                // Shows navbar once user scrolls past 80% of the viewport height
+                if (window.scrollY > (window.innerHeight * 0.8)) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
             });
 
             // Scroll Reveal Animations
@@ -629,3 +669,5 @@
     </script>
 </body>
 </html>
+
+```
